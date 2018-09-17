@@ -11,20 +11,20 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: - Constants
-    /***************************************************************/
     let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
     let APP_ID = ""
     
     // MARK: - Instance Variables
-    /***************************************************************/
 
     
     // MARK: - IB Outlets
-    /***************************************************************/
-
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var weatherIconImageView: UIImageView!
+    @IBOutlet weak var currentCityLabel: UILabel!
+    
+    
     
     // MARK: - View Methods
-    /***************************************************************/
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -32,7 +32,6 @@ class ViewController: UIViewController {
 
     
     //MARK: - Networking
-    /***************************************************************/
     //Write the getWeatherData method here:
     
     
@@ -42,7 +41,6 @@ class ViewController: UIViewController {
     
     
     //MARK: - JSON Parsing
-    /***************************************************************/
     //Write the updateWeatherData method here:
     
     
@@ -50,7 +48,6 @@ class ViewController: UIViewController {
     
     
     //MARK: - UI Updates
-    /***************************************************************/
     //Write the updateUIWithWeatherData method here:
     
     
@@ -59,7 +56,6 @@ class ViewController: UIViewController {
     
     
     //MARK: - Location Manager Delegate Methods
-    /***************************************************************/
     //Write the didUpdateLocations method here:
     //Write the didFailWithError method here:
     
@@ -68,14 +64,8 @@ class ViewController: UIViewController {
     
     
     //MARK: - Change City Delegate methods
-    /***************************************************************/
     //Write the userEnteredANewCityName Delegate method here:
     //Write the PrepareForSegue Method here
-    
-    
-    
-    
-    
 }
 
 

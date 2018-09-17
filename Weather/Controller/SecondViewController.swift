@@ -9,23 +9,16 @@
 import UIKit
 
 
-//Write the protocol declaration here:
-
-
-
 class SecondViewController: UIViewController {
+
     
-    //Declare the delegate variable here:
-    
-    
-    //This is the pre-linked IBOutlets to the text field:
-    @IBOutlet weak var changeCityTextField: UITextField!
+    // MARK: - IB Outlets
+    @IBOutlet weak var newCityTextField: UITextField!
     
     
-    //This is the IBAction that gets called when the user taps on the "Get Weather" button:
-    @IBAction func getWeatherPressed(_ sender: AnyObject) {
-        
-        
+    // MARK: - IB Actions
+    // This IBAction is called when the user wants to fetch the weather from the city they entered
+    @IBAction func getWeatherPressed(_ sender: Any) {
         
         //1 Get the city name the user entered in the text field
         
@@ -34,14 +27,11 @@ class SecondViewController: UIViewController {
         
         
         //3 dismiss the Change City View Controller to go back to the WeatherViewController
-        
-        
     }
     
     
-    
-    //This is the IBAction that gets called when the user taps the back button. It dismisses the ChangeCityViewController.
-    @IBAction func backButtonPressed(_ sender: AnyObject) {
+    // Go back to the first view controller
+    @IBAction func backButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     

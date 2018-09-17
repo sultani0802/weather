@@ -86,6 +86,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="currentCityLabel" destination="nFQ-hz-yre" id="U9M-K8-peE"/>
+                        <outlet property="temperatureLabel" destination="1MD-Tk-yjc" id="VTY-6m-VAS"/>
+                        <outlet property="weatherIconImageView" destination="cv7-Tr-O77" id="dOO-8i-kKd"/>
                         <segue destination="jd2-KB-Tzg" kind="presentation" identifier="changeCityName" id="F5r-K3-cEO"/>
                     </connections>
                 </viewController>
@@ -116,6 +119,9 @@
                                         <state key="normal" image="left">
                                             <color key="titleShadowColor" red="0.50196078431372548" green="0.49803921568627452" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="jd2-KB-Tzg" eventType="touchUpInside" id="T0N-Db-sml"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zbr-3B-oTC">
                                         <rect key="frame" x="12" y="190" width="351" height="30"/>
@@ -127,6 +133,9 @@
                                             <color key="titleColor" red="0.99287086725234985" green="0.99701410531997681" blue="0.99298995733261108" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" red="0.50196078431372548" green="0.49803921568627452" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="getWeatherPressed:" destination="jd2-KB-Tzg" eventType="touchUpInside" id="rwe-wg-suK"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter City Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gaf-XA-iu6">
                                         <rect key="frame" x="93" y="140" width="189" height="30"/>
@@ -162,6 +171,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="U2S-dq-CyS"/>
                     </view>
+                    <connections>
+                        <outlet property="getWeatherPressed" destination="Zbr-3B-oTC" id="Eg8-e8-bJE"/>
+                        <outlet property="newCityTextField" destination="gaf-XA-iu6" id="nxQ-Y4-HFt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pwu-Ld-3Rs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
