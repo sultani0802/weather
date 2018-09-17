@@ -38,9 +38,8 @@
                                 <rect key="frame" x="0.0" y="303" width="375" height="455"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21°" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MD-Tk-yjc">
-                                        <rect key="frame" x="191" y="0.0" width="168" height="127"/>
+                                        <rect key="frame" x="207.66666666666663" y="0.0" width="151.33333333333337" height="127"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="168" id="5HE-p4-Utu"/>
                                             <constraint firstAttribute="height" constant="127" id="fhr-YN-Wnd"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="100"/>
@@ -113,7 +112,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8r-V5-a4t">
-                                        <rect key="frame" x="16" y="28" width="32" height="32"/>
+                                        <rect key="frame" x="16" y="35" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="69g-3g-XZL"/>
                                             <constraint firstAttribute="height" constant="32" id="c6m-fN-Lof"/>
@@ -153,7 +152,7 @@
                                     <constraint firstAttribute="bottom" secondItem="Zbr-3B-oTC" secondAttribute="bottom" id="5bA-Dd-9r8"/>
                                     <constraint firstItem="Zbr-3B-oTC" firstAttribute="top" secondItem="gaf-XA-iu6" secondAttribute="bottom" constant="20" id="9hG-62-kr4"/>
                                     <constraint firstItem="Zbr-3B-oTC" firstAttribute="centerX" secondItem="Msb-1c-uss" secondAttribute="centerX" id="EcS-Ze-Nln"/>
-                                    <constraint firstItem="w8r-V5-a4t" firstAttribute="top" secondItem="Msb-1c-uss" secondAttribute="top" constant="28" id="LqM-5I-gk3"/>
+                                    <constraint firstItem="w8r-V5-a4t" firstAttribute="top" secondItem="Msb-1c-uss" secondAttribute="top" constant="35" id="LqM-5I-gk3"/>
                                     <constraint firstAttribute="height" constant="220" id="g6z-iD-B9L"/>
                                     <constraint firstItem="w8r-V5-a4t" firstAttribute="leading" secondItem="Msb-1c-uss" secondAttribute="leading" constant="16" id="gC2-ly-nnZ"/>
                                     <constraint firstAttribute="trailing" secondItem="gaf-XA-iu6" secondAttribute="trailing" constant="93" id="je0-Ui-vK0"/>
