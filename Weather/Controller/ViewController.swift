@@ -46,14 +46,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate, SecondViewDel
             response in
             if response.result.isSuccess {
                 print("Request to OWM was successfully sent.")
+                let weatherJSON : JSON = JSON(response.result.value!) // Create local version of JSON from OpenWeatherMap
                 
-                let weatherJSON : JSON = JSON(response.result.value!) // JSON from OpenWeatherMap
-                print(weatherJSON)
-                self.updateWeatherData(json: weatherJSON) // Pass the data to the method that will handle the JSON object returned
+                // Created a switch statement to handle the different response codes from OpeNWeatherMap
+                switch weatherJSON["cod"].intValue {
+                case 200: // Success
+                    print("Retrieved weather data successfuly.")
+                    self.updateWeatherData(json: weatherJSON) // Pass the data to the method that will handle the JSON object returned
+                case 401: // Invalid API key
+                    print("API key is invalid")
+                    self.displayErrorMessage(myMessage: "Contact developer(error: \(weatherJSON["cod"].intValue))")
+                default: // Default case for error handling
+                    print("Error:")
+                    self.displayErrorMessage(myMessage: "Contact developer(error: \(weatherJSON["cod"].intValue))")
+                }
                 
             } else {
                 print("Error: \(String(describing: response.result.error))")
-                self.currentCityLabel.text = "Error with connection"
+                self.displayErrorMessage(myMessage: "Could not connect to weather server.")
             }
         }
     }
@@ -85,6 +95,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, SecondViewDel
         currentCityLabel.text = weatherDataModel.city // Set the city
         temperatureLabel.text = "\(String(weatherDataModel.temperature))°" // Set the temperature
         weatherIconImageView.image = UIImage(named: weatherDataModel.weatherIconName) // 
+    }
+    
+    func displayErrorMessage(myMessage: String) {
+        let alert = UIAlertController(title: "Error", message: myMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
     
@@ -119,8 +137,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, SecondViewDel
     // MARK: - Second View Delegate Methods
     // This method is automatically called when the user hits the "Fetch Weather" button
     func userEnteredNewCity(city: String) {
-        print(city)
-        let params : [String : String] = ["q": city, "appid": APP_ID]
+        let params : [String : String] = ["q": city, "appid": APP_ID] // Create the parameters for GET request
         getWeatherData(url: WEATHER_URL, parameters: params) // GET the weather data
     }
     
