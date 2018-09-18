@@ -19,8 +19,6 @@ This app requires your Location Services to function properly
 ## Built With
 - Swift standard library (UIKit)
 - CoreLocation: used to get your device GPS location
-- Alamofire: used to make network requests
-- SwiftJSON: handle JSON objects easier for me
-- OpenWeatherMap API: used to fetch weather information
-
-[OpenWeatherMap API](https://openweathermap.org/current)
+- [Alamofire: used to make network requests](https://cocoapods.org/pods/Alamofire)
+- [SwiftJSON: handle JSON objects easier for me](https://cocoapods.org/pods/Swift.Json)
+- [OpenWeatherMap API: used to fetch weather information](https://openweathermap.org/current)
