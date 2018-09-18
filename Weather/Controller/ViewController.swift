@@ -11,11 +11,11 @@ import CoreLocation // Allows us to use the GPS on our iPhone
 import Alamofire // Allows use to make Networking requests
 import SwiftyJSON // Makes handling JSON objects easier
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, SecondViewDelegate {
     
     // MARK: - Constants
     let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
-    let APP_ID = "f6f749e921fd7189db37b44ab0d7b273" // Required to make API calls to OpenWeatherMap
+    let APP_ID = "2327e118b839d3e9f1d1318fc1f8adf2" // Required to make API calls to OpenWeatherMap
     
     // MARK: - Instance Variables
     var locationManager: CLLocationManager = CLLocationManager() // Object required to use GPS
@@ -40,14 +40,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     //MARK: - Networking
-    //Write the getWeatherData method here:
+    // Called by the location manager delegate method locationManager(didUpdateLocation) below
     func getWeatherData(url: String, parameters: [String:String]) {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON {
             response in
             if response.result.isSuccess {
-                print("Success! Weather data retrieved.")
+                print("Request to OWM was successfully sent.")
                 
                 let weatherJSON : JSON = JSON(response.result.value!) // JSON from OpenWeatherMap
+                print(weatherJSON)
                 self.updateWeatherData(json: weatherJSON) // Pass the data to the method that will handle the JSON object returned
                 
             } else {
@@ -60,7 +61,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     //MARK: - JSON Parsing
-    //Write the updateWeatherData method here:
+    // Called by getWeatherData() above
     func updateWeatherData(json: JSON){
         if let temperature = json["main"]["temp"].double {
             
@@ -79,15 +80,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     //MARK: - UI Updates
+    // Called by updateWeatherData() above
     func updateUIWithWeatherData() {
         currentCityLabel.text = weatherDataModel.city // Set the city
         temperatureLabel.text = "\(String(weatherDataModel.temperature))°" // Set the temperature
         weatherIconImageView.image = UIImage(named: weatherDataModel.weatherIconName) // 
     }
-    
-    
-    
-    
     
     
     //MARK: - Location Manager Delegate Methods
@@ -118,10 +116,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         currentCityLabel.text = "Location unavailable" // Show the user we can't find their location
     }
     
+    // MARK: - Second View Delegate Methods
+    // This method is automatically called when the user hits the "Fetch Weather" button
+    func userEnteredNewCity(city: String) {
+        print(city)
+        let params : [String : String] = ["q": city, "appid": APP_ID]
+        getWeatherData(url: WEATHER_URL, parameters: params) // GET the weather data
+    }
     
-    //MARK: - Change City Delegate methods
+    //MARK: - Second View Delegate methods
     //Write the userEnteredANewCityName Delegate method here:
     //Write the PrepareForSegue Method here
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToSecondView" {
+            let destinationVC = segue.destination as! SecondViewController // Initialize the VC that we are switching to
+            
+            destinationVC.delegate = self // Set the destination VC's delegate we are going to this View Controller
+        }
+    }
 }
 
 

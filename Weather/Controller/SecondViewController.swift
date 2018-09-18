@@ -9,24 +9,26 @@
 import UIKit
 
 
+protocol SecondViewDelegate {
+    func userEnteredNewCity (city: String)
+}
+
 class SecondViewController: UIViewController {
 
     
     // MARK: - IB Outlets
     @IBOutlet weak var newCityTextField: UITextField!
     
+    var delegate : SecondViewDelegate? // Creating our reference to the instantiated protocol
+    
     
     // MARK: - IB Actions
-    // This IBAction is called when the user wants to fetch the weather from the city they entered
+    // This IBAction is called when the user wants to fetch the weather from the city they entered when they click "Fetch Weather"
     @IBAction func getWeatherPressed(_ sender: Any) {
         
-        //1 Get the city name the user entered in the text field
-        
-        
-        //2 If we have a delegate set, call the method userEnteredANewCityName
-        
-        
-        //3 dismiss the Change City View Controller to go back to the WeatherViewController
+        let newCity = newCityTextField.text! // Grab the city the user entered
+        delegate?.userEnteredNewCity(city: newCity) // If this delegate is not nil, pass the city the user entered to the method that is being handled by the delegate (which is ViewController.swift)         
+        self.dismiss(animated: true, completion: nil) // Dismiss this view controller
     }
     
     
