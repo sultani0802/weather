@@ -15,7 +15,6 @@ This app requires your Location Services to function properly
 ### Manually
 - Download the project
 - Double click Weather.xcworkspace to open the project in Xcode
-- I have a free account registered to OpenWeatherMap. Meaning, my APP_ID has a limited amount of get requests. If OWM gives you a hard time, inform me and I will update it.
 
 ## Built With
 - Swift standard library (UIKit)

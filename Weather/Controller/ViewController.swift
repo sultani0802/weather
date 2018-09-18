@@ -27,10 +27,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, SecondViewDel
     @IBOutlet weak var currentCityLabel: UILabel!
     
     
-    
     // MARK: - View Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentCityLabel.adjustsFontSizeToFitWidth = true // Shrink the size of the text if it doesn't fit
         
         locationManager.delegate = self // This class is the delegate for GPS library
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer // Accuracy for the GPS
@@ -82,7 +82,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, SecondViewDel
             
             updateUIWithWeatherData() // Update the UI
         } else {
-            currentCityLabel.text = "Weather unavailable" // Tell the user that we couldn't retrieve the weather information
+            self.displayErrorMessage(myMessage: "Weather unavailable (Error: \(json["cod"].stringValue))") // Tell the user that we couldn't retrieve the weather information
         }
     }
     
@@ -93,8 +93,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, SecondViewDel
     // Called by updateWeatherData() above
     func updateUIWithWeatherData() {
         currentCityLabel.text = weatherDataModel.city // Set the city
-        temperatureLabel.text = "\(String(weatherDataModel.temperature))°" // Set the temperature
-        weatherIconImageView.image = UIImage(named: weatherDataModel.weatherIconName) // 
+        temperatureLabel.text = "\(String(weatherDataModel.temperature))℃" // Set the temperature
+        weatherIconImageView.image = UIImage(named: weatherDataModel.weatherIconName) // Update the condition
     }
     
     func displayErrorMessage(myMessage: String) {
@@ -131,7 +131,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, SecondViewDel
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error) // Print error to the console
         
-        currentCityLabel.text = "Location unavailable" // Show the user we can't find their location
+        displayErrorMessage(myMessage: "Weather unavailable (Error: \(error))") // Tell the user that we couldn't retrieve the weather information
+        
     }
     
     // MARK: - Second View Delegate Methods
