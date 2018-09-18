@@ -22,3 +22,5 @@ This app requires your Location Services to function properly
 - Alamofire: used to make network requests
 - SwiftJSON: handle JSON objects easier for me
 - OpenWeatherMap API: used to fetch weather information
+
+[OpenWeatherMap API](https://openweathermap.org/current)
